@@ -31,6 +31,43 @@ function Copy-FileToWebApp
     return $PublishingCredentials
 }
 
+function Create-WebAppDirectory {
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$Directory,
+
+        [Parameter(Mandatory)]
+        [String]$ResourceGroupName,
+
+        [Parameter(Mandatory)]
+        [String]$WebAppName,
+
+        [Parameter(Mandatory=$false)]
+        [System.Object]$PublishingCredentials
+    )
+
+    if ([String]::IsNullOrEmpty($PublishingCredentials)) {
+        $PublishingCredentials = $(Get-WebAppPublishingCredentials -ResourceGroupName $ResourceGroupName -WebAppName $WebAppName)
+    }
+
+    $uri = New-Object System.Uri($PublishingCredentials.url + "/$Directory")
+
+    try {
+        $ftprequest = [System.Net.FtpWebRequest]::Create($uri);
+        $ftprequest.Method = [System.Net.WebRequestMethods+Ftp]::MakeDirectory
+        $ftprequest.UseBinary = $true
+    
+        $ftprequest.Credentials = New-Object System.Net.NetworkCredential($PublishingCredentials.username,$PublishingCredentials.password)
+    
+        $response = $ftprequest.GetResponse();
+        $response.close();
+    }
+    catch 
+    {
+        Write-Verbose "Folder not created"
+    }
+  }
+
 function Get-WebAppPublishingCredentials
 {
     param(
