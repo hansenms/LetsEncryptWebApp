@@ -9,11 +9,11 @@ Install-Module ACMESharp -AllowClobber
 
 All the code needed to set up a Web App, generate the certificate, and bind the certificate is contained in the [CreateLetsEncryptWebApp.ps1](CreateLetsEncryptWebApp.ps1) script. The script does the following:
 
-1. Creates a Web App with an App Service plan, if it doesn't exist already
+1. Creates a Web App with an App Service plan, if it doesn't exist already.
 2. Pauses to allow the user to set a CNAME to point to the Web App. It is important to complete this step before continuing or the Web App will not allow the custom DNS name.
 3. Creates an ACME Vault and registration (if it doesn't exist).
 4. Generates a new ACME identifier for the DNS name.
-5. Starts a HTTP challenge.
+5. Starts an HTTP challenge.
 6. Uploads appropriate challenge reponse to the Web App.
 7. Submits the challenge. 
 8. Waits for challenge validation.
