@@ -1,8 +1,19 @@
 Azure Web App with Let's Encrypt Certificate
 --------------------------------------------
 
-This repository contains example code for creating an [Azure Web App](https://azure.microsoft.com/en-us/services/app-service/web/) with a [Let's Encrypt](https://letsencrypt.org/) SSL Certificate. It uses the [ACMESharp](https://github.com/ebekker/ACMESharp) Powershell module. You can install the ACMESharp Module in Powershell with:
+This repository contains example code for creating an [Azure Web App](https://azure.microsoft.com/en-us/services/app-service/web/) with a [Let's Encrypt](https://letsencrypt.org/) SSL Certificate. It uses the [ACMESharp](https://github.com/ebekker/ACMESharp) Powershell module. This certificate is valid for 90 days. 
 
+### Requirements:
+- [AzureRM (Resource Mananger)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/powershell-azure-resource-manager)
+- [ACMESharp](https://github.com/ebekker/ACMESharp)
+
+### Installation instructions
+
+1. Install the Azure Resource Manager modules from the PowerShell Gallery
+```
+Install-Module AzureRM -AllowClobber
+```
+2. Install the ACMESharp Module:
 ```
 Install-Module ACMESharp -AllowClobber
 ```
