@@ -85,7 +85,7 @@ if ([String]::IsNullOrEmpty($VaultName))
 }
 
 #Create the vault if it doesn't exist
-if (-not $(Get-ACMEVaultProfile -ListProfiles) -contains $VaultName) 
+if (-not ($(Get-ACMEVaultProfile -ListProfiles) -contains $VaultName)) 
 {
     $vaultRootPath = "C:\CertificateVault\" + $vaultName
     $vaultPath = Join-Path -Path $vaultRootPath -ChildPath $vaultName
