@@ -37,7 +37,7 @@ To call the script:
 
 ```
 .\CreateLetsEncryptWebApp.ps1 -ResourceGroupName "RESOURCE-GROUP-NAME" `
--WebAppName "WEB-APP-NAME" -Fqdn "DOMAIN NAME" -Location "LOCATION" `
+-WebAppName "WEB-APP-NAME" -Fqdn "DOMAIN NAME" -Location "LOCATION (e.g. eastus)" `
 -ContactEmail "EMAIL ADDRESS FOR REGISTRATION"
 ```
 
