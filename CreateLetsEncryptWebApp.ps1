@@ -67,7 +67,7 @@ if ($NotPresent) {
     $app = New-AzureRmWebApp -Name $WebAppName -ResourceGroupName $ResourceGroupName -Location $Location -AppServicePlan $asp.Id
 }
 
-$message = "Please ad a DNS CNAME entry from $Fqdn to " + $app.HostNames[0]
+$message = "Please add a DNS CNAME entry from $Fqdn to " + $app.HostNames[0]
 Write-Host $message
 Read-Host "Hit enter when completed."
 
